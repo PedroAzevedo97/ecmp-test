@@ -20,8 +20,8 @@ module circuit
    `SIGNAL2OUT(y, y_int) //connect internal y to output
 
    //y shift register 
-   `REG_ARE(clk, rst, 1'b0, cnt!=99, y_int_n_1, y_int)
-   `REG_ARE(clk, rst, 1'b0, cnt!=99, y_int_n_2, y_int_n_1)
+   `REG_ARE(clk, rst, 1'b0, en & (cnt!=99), y_int_n_1, y_int)
+   `REG_ARE(clk, rst, 1'b0, en & (cnt!=99), y_int_n_2, y_int_n_1)
 
    //iteration counter
    `COUNTER_ARE(clk, rst, cnt!=99, cnt)
